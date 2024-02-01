@@ -56,11 +56,6 @@ class ShowRecipesWithoutProductView(View):
     def get(self, request, product_id):
         # Пытаемся получить объект продукта из базы данных или возвращаем ошибку 404.
         product = get_object_or_404(Product, id=product_id)
-        print(product)
-        print(product.id)
-        print(product.name)
-        print(product.count)
-        print(product_id)
 
         # Получаем все рецепты, которые не содержат указанный продукт или содержат его менее чем 10 грамм
         recipes_without_product = Recipe.objects.exclude(products__id=product_id)
